@@ -56,15 +56,46 @@ shuffle($mazzo);
         var puntaTutto = document.getElementById("puntaTutto");
         var gioca = document.getElementById("gioca");
 
-        //se premo punta 10
-        punta10.onclick(function(){
-            puntata = 10;
-            creditiPlayer = creditiPlayer - puntata;
-            document.querySelector(".puntata").innerHTML = "<h4>PUNTATA: " + puntata + "</h4>";
-            document.querySelector(".crediti").innerHTML = "<p>Crediti: " + creditiPlayer + "</p>";
-        })
+        //se premo punta 10, 25, 50 o ALL-IN
+        punta10.onclick = function() {
+            puntata += 10;
+            if(creditiPlayer - 10 >= 0){ //controllo se l'utente ha abbastanza crediti per proseguire
+                creditiPlayer = creditiPlayer - 10;
+                document.querySelector(".puntata").innerHTML = "<h4>PUNTATA: " + puntata + "</h4>";
+                document.querySelector(".crediti").innerHTML = "<p>Crediti: " + creditiPlayer + "</p>";
+            }
+        };
+        punta25.onclick = function() {
+            puntata += 25;
+            if(creditiPlayer - 25 >= 0){
+                creditiPlayer = creditiPlayer - 25;
+                document.querySelector(".puntata").innerHTML = "<h4>PUNTATA: " + puntata + "</h4>";
+                document.querySelector(".crediti").innerHTML = "<p>Crediti: " + creditiPlayer + "</p>";                
+            }
+        };
+        punta50.onclick = function() {
+            puntata += 50;
+            if(creditiPlayer - 50 >= 0){
+                creditiPlayer = creditiPlayer - 50;
+                document.querySelector(".puntata").innerHTML = "<h4>PUNTATA: " + puntata + "</h4>";
+                document.querySelector(".crediti").innerHTML = "<p>Crediti: " + creditiPlayer + "</p>";
+            }
+        };
+        puntaTutto.onclick = function() {
+            puntata += creditiPlayer;
+            if(!(creditiPlayer <= 0)){
+                creditiPlayer = creditiPlayer - creditiPlayer;
+                document.querySelector(".puntata").innerHTML = "<h4>PUNTATA: " + puntata + "</h4>";
+                document.querySelector(".crediti").innerHTML = "<p>Crediti: " + creditiPlayer + "</p>";
+            }  
+        };
     
-
+        //se premo gioca cambia il cotenuto nel div .comandi
+        gioca.onclick = function() {
+            if(puntata > 0){
+                document.querySelector(".comandi").innerHTML = "<h4>GIOCA:</h4>"
+            }
+        };
     </script>
 </body>
 </html>
