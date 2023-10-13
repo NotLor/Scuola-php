@@ -2,20 +2,28 @@
 class Carta
 {
     private $seme;
+    private $numero;
     private $valore;
 
-    public function __construct($seme, $valore)
+    public function __construct($seme, $numero, $valore)
     {
         $this->seme = $seme;
+        $this->numero = $numero;
         $this->valore = $valore;
     }
 
-    private $carte = array(
-        "seme" => array("fiori", "quadri", "cuori", "picche"),
-        "valore" => array("asso", "due", "tre", "quattro", "cinque", "sei", "sette", "donna", "cavallo", "re"),
-    );
-
-    function getCarta(){
-        return $this->carte[$this->seme][$this->valore];
+    public function getSeme()
+    {
+        return $this->seme;
     }
+
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    public function getValore()
+    {
+        return $this->valore;
+    }   
 }
